@@ -24,7 +24,21 @@ class Barbero(Thread):
         self.estado = estado 
     
     def run(self):
-        pass
+        global num_ocupadas
+        while True:
+            if barbero.estado == False: #Está durmiendo
+                cliente.acquire() 
+                '''Como el barbero está durmiendo, espero hasta que entren clientes para despertarlo.
+                Eso significa que se va a quedar bloqueado en esta linea hasta que en la clase clientes se despierte al barbero desbloqueando el semáforo clientes'''
+
+            barbero_durmiendo.release() #Llego a esta linea cuando se ha despertado al barbero. Desboqueo su semáforo
+            cliente_espera.acquire() #Lo desbloqueo cuando esté siendo atendido (en la otra clase)
+
+            print(f"El barbero está atendiendo al cliente\n")
+            time.sleep(random.randint(1, 2))
+            cliente_atendido.release() #Soltamos el semáforo cuando el cliente ha termiando de estar atendido
+            print(f"El cliente ha sido atendido, se va\n")
+            
 
 class Cliente(Thread):
     #Los distintos estados del cliente son los semáforos de arriba. 
