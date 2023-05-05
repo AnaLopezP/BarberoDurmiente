@@ -16,4 +16,9 @@ class Barbero(Thread):
     def __init__(self):
         super().__init__()
         self.estado = False #Es false si está durmiendo. True si está despierto
-        
+
+    def get_estado(self):
+        return self.estado
+
+    def set_estado(self, estado):
+        self.estado = estado 
