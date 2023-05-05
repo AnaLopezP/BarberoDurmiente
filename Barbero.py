@@ -91,7 +91,7 @@ list_hilos.append(barbero)
 
 #Creo a los clientes:
 for i in range(1, num_clientes):
-    cli = Cliente()
+    cli = Cliente(i)
     list_hilos.append(cli)
 
 for i in list_hilos:
