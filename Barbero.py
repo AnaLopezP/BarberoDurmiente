@@ -44,3 +44,20 @@ class Cliente(Thread):
 
     def run(self):
         pass
+
+
+#CÓDIGO PRINCIPAL
+list_hilos = [] #Lista donde almaceno los hilos que voy creando
+barbero = Barbero() #Creo al barbero
+list_hilos.append(barbero)
+
+#Creo a los clientes:
+for i in range(1, num_clientes):
+    cli = Cliente()
+    list_hilos.append(cli)
+
+for i in list_hilos:
+    i.start() #Hago que se ejecuten los códigos de los hilos barbero y clientes. Llamo al run
+
+for i in list_hilos:
+    i.join() #Para esperar a que termine el código anterior antes de continuar
