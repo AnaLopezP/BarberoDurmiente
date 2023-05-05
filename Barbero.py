@@ -22,3 +22,6 @@ class Barbero(Thread):
 
     def set_estado(self, estado):
         self.estado = estado 
+    
+    def run(self):
+        pass
