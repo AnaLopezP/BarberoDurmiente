@@ -41,4 +41,6 @@ class Cliente(Thread):
 
     def set_id(self, id):
         self.id = id
-        
+
+    def run(self):
+        pass
