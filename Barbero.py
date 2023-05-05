@@ -25,3 +25,13 @@ class Barbero(Thread):
     
     def run(self):
         pass
+
+class Cliente(Thread):
+    #Los distintos estados del cliente son los semáforos de arriba. 
+    #Puede estar: esperando, atendido, o no hay sillas.
+    #Ponemos un tiempo para que vayan apareciendo clientes:
+    time.sleep(random.uniform(0, 15))
+
+    def _init_(self, id):
+        super().__init__()
+        self.id = id
